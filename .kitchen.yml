@@ -1,0 +1,17 @@
+---
+driver_plugin: docker
+driver_config:
+  require_chef_omnibus: true
+
+platforms:
+- name: centos-6
+  driver_config:
+    image: inokappa/centos
+
+suites:
+- name: default
+  run_list: [
+    "recipe[cloudwatch_agent_chef]",
+    "recipe[cloudwatch_agent_chef::create_script]"
+  ]
+  attributes: {}
